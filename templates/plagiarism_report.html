@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plagiarism Report - Online Assignment Submission System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="report-container">
+        <header class="report-header">
+            <div class="header-content">
+                <a href="/lecturer_dashboard" class="back-link">← Back to Dashboard</a>
+                <div class="header-info">
+                    <h1>Plagiarism Report</h1>
+                    <p class="header-subtitle">{{ submission.filename }}</p>
+                </div>
+            </div>
+        </header>
+
+        <main class="report-main">
+            <div class="report-card">
+                <div class="report-summary">
+                    <div class="summary-item">
+                        <span class="summary-label">File Name:</span>
+                        <span class="summary-value">{{ submission.filename }}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Plagiarism Score:</span>
+                        <span class="summary-value score-value {% if submission.plagiarism_score > 30 %}high{% elif submission.plagiarism_score > 15 %}medium{% else %}low{% endif %}">
+                            {{ submission.plagiarism_score }}%
+                        </span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Analysis Date:</span>
+                        <span class="summary-value">{{ submission.created_at.strftime('%B %d, %Y at %I:%M %p') if submission.created_at else 'N/A' }}</span>
+                    </div>
+                </div>
+
+                <div class="report-content">
+                    <h3>Detailed Analysis</h3>
+                    <div class="report-text">
+                        <pre>{{ report }}</pre>
+                    </div>
+                </div>
+
+                <div class="report-actions">
+                    <a href="/lecturer_dashboard" class="btn btn-outline">Back to Dashboard</a>
+                    <button onclick="window.print()" class="btn btn-primary">Print Report</button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

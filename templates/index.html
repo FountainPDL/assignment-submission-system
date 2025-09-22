@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Assignment Submission System - Plagiarism Detection Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="homepage-header">
+        <nav class="nav-container">
+            <div class="nav-content">
+                <div class="logo">
+                    <div class="logo-icon">📚</div>
+                    <span class="logo-text">Online Assignment Submission</span>
+                </div>
+                <div class="nav-actions">
+                    <a href="{{ url_for('login') }}" class="btn btn-outline">Sign In</a>
+                    <a href="{{ url_for('register') }}" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Maintain Online Assignment Submission with 
+                        <span class="hero-highlight">Advanced Plagiarism Detection</span>
+                    </h1>
+                    <p class="hero-description">
+                        Empower educators and students with cutting-edge plagiarism detection technology. 
+                        Ensure originality, promote academic honesty, and streamline the grading process 
+                        with our comprehensive platform.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="{{ url_for('register') }}" class="btn btn-primary btn-large">
+                            Start Free Trial
+                        </a>
+                        <a href="#features" class="btn btn-outline btn-large">
+                            Learn More
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">99.9%</div>
+                            <div class="stat-label">Accuracy Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">10M+</div>
+                            <div class="stat-label">Documents Analyzed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Institutions Trust Us</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <div class="card-header">
+                            <div class="card-title">Plagiarism Analysis</div>
+                            <div class="card-status">✓ Complete</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="analysis-item">
+                                <span class="analysis-label">Document:</span>
+                                <span class="analysis-value">research_paper.pdf</span>
+                            </div>
+                            <div class="analysis-item">
+                                <span class="analysis-label">Originality Score:</span>
+                                <span class="analysis-value score-high">92%</span>
+                            </div>
+                            <div class="analysis-item">
+                                <span class="analysis-label">Sources Found:</span>
+                                <span class="analysis-value">3 matches</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 92%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="features-container">
+            <div class="section-header">
+                <h2 class="section-title">Powerful Features for Academic Excellence</h2>
+                <p class="section-description">
+                    Everything you need to maintain Online Assignment Submission and streamline your workflow
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3 class="feature-title">Advanced Detection</h3>
+                    <p class="feature-description">
+                        State-of-the-art algorithms detect plagiarism across billions of web pages, 
+                        academic papers, and submitted documents with unmatched accuracy.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Detailed Reports</h3>
+                    <p class="feature-description">
+                        Comprehensive plagiarism reports with highlighted matches, similarity scores, 
+                        and source citations to help educators make informed decisions.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Real-time Analysis</h3>
+                    <p class="feature-description">
+                        Get instant results with our lightning-fast processing engine. 
+                        Upload documents and receive detailed analysis within seconds.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Assignment Management</h3>
+                    <p class="feature-description">
+                        Create, distribute, and manage assignments seamlessly. Track submissions, 
+                        provide feedback, and grade efficiently all in one platform.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3 class="feature-title">Multi-User Support</h3>
+                    <p class="feature-description">
+                        Separate dashboards for students and educators with role-based permissions 
+                        and customized workflows for different user types.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">Secure & Private</h3>
+                    <p class="feature-description">
+                        Enterprise-grade security ensures your documents and data remain private 
+                        and protected with end-to-end encryption and secure storage.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works-section">
+        <div class="how-it-works-container">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-description">
+                    Get started in three simple steps
+                </p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Upload Document</h3>
+                        <p class="step-description">
+                            Simply drag and drop or select your document. We support PDF, DOC, DOCX, and TXT formats.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">AI Analysis</h3>
+                        <p class="step-description">
+                            Our advanced AI scans your document against billions of sources to detect potential plagiarism.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Get Results</h3>
+                        <p class="step-description">
+                            Receive a detailed report with similarity scores, highlighted matches, and actionable insights.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="benefits-container">
+            <div class="benefits-content">
+                <div class="benefits-text">
+                    <h2 class="benefits-title">Why Choose Our Platform?</h2>
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div class="benefit-text">
+                                <h4>Save Time</h4>
+                                <p>Automate plagiarism detection and focus on what matters most - teaching and learning.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div class="benefit-text">
+                                <h4>Improve Quality</h4>
+                                <p>Encourage original thinking and maintain high academic standards across your institution.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div class="benefit-text">
+                                <h4>Easy Integration</h4>
+                                <p>Seamlessly integrate with your existing workflow and learning management systems.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div class="benefit-text">
+                                <h4>24/7 Support</h4>
+                                <p>Get help whenever you need it with our dedicated customer support team.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="benefits-visual">
+                    <div class="dashboard-preview">
+                        <div class="preview-header">
+                            <div class="preview-title">Dashboard Overview</div>
+                            <div class="preview-user">👤 Dr. Smith</div>
+                        </div>
+                        <div class="preview-content">
+                            <div class="preview-stat">
+                                <div class="preview-stat-number">24</div>
+                                <div class="preview-stat-label">Assignments</div>
+                            </div>
+                            <div class="preview-stat">
+                                <div class="preview-stat-number">156</div>
+                                <div class="preview-stat-label">Submissions</div>
+                            </div>
+                            <div class="preview-stat">
+                                <div class="preview-stat-number">94%</div>
+                                <div class="preview-stat-label">Avg. Originality</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Get Started?</h2>
+                <p class="cta-description">
+                    Join thousands of educators and students who trust our platform for Online Assignment Submission.
+                </p>
+                <div class="cta-actions">
+                    <a href="{{ url_for('register') }}" class="btn btn-primary btn-large">
+                        Create Free Account
+                    </a>
+                    <a href="{{ url_for('login') }}" class="btn btn-outline btn-large">
+                        Sign In
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="homepage-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon">📚</div>
+                        <span class="logo-text">Online Assignment Submission</span>
+                    </div>
+                    <p class="footer-description">
+                        Empowering education through advanced plagiarism detection and Online Assignment Submission solutions.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4 class="footer-title">Platform</h4>
+                        <ul class="footer-list">
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#how-it-works">How It Works</a></li>
+                            <li><a href="#pricing">Pricing</a></li>
+                            <li><a href="#support">Support</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">Account</h4>
+                        <ul class="footer-list">
+                            <li><a href="{{ url_for('login') }}">Sign In</a></li>
+                            <li><a href="{{ url_for('register') }}">Register</a></li>
+                            <li><a href="#dashboard">Dashboard</a></li>
+                            <li><a href="#profile">Profile</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4 class="footer-title">Resources</h4>
+                        <ul class="footer-list">
+                            <li><a href="#documentation">Documentation</a></li>
+                            <li><a href="#tutorials">Tutorials</a></li>
+                            <li><a href="#blog">Blog</a></li>
+                            <li><a href="#community">Community</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Online Assignment Submission System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

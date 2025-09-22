@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Assignment - Online Assignment Submission System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-card">
+            <div class="form-header">
+                <a href="/student_dashboard" class="back-link">← Back to Dashboard</a>
+                <h2>Submit: {{ assignment.title }}</h2>
+                <p class="form-subtitle">Upload your assignment file</p>
+                <div class="assignment-details">
+                    <p><strong>Description:</strong> {{ assignment.description }}</p>
+                    <p><strong>Due Date:</strong> {{ assignment.due_date }}</p>
+                    <p><strong>Max Score:</strong> {{ assignment.max_score }}</p>
+                </div>
+            </div>
+
+            <form class="form" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="file">Select File</label>
+                    <div class="file-upload">
+                        <input type="file" name="file" id="file" required accept=".pdf,.doc,.docx,.txt">
+                        <div class="file-upload-text">
+                            <span class="file-icon">📄</span>
+                            <span>Choose file or drag and drop</span>
+                            <small>Supported formats: PDF, DOC, DOCX, TXT</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <a href="/student_dashboard" class="btn btn-outline">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Submit Assignment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

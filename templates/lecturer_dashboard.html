@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecturer Dashboard - Online Assignment Submission System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">📚</div>
+                    <span>Online Assignment Submission</span>
+                </div>
+                <div class="user-info">
+                    <span class="welcome-text">Welcome, {{ user.full_name }}</span>
+                    <a href="/logout" class="btn btn-outline">Logout</a>
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Quick Actions</h3>
+                    </div>
+                    <div class="card-content">
+                        <a href="/create_assignment" class="btn btn-primary btn-block">
+                            <span class="btn-icon">➕</span>
+                            Create New Assignment
+                        </a>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Your Assignments</h3>
+                        <span class="badge">{{ assignments|length }}</span>
+                    </div>
+                    <div class="card-content">
+                        {% if assignments %}
+                            <div class="assignment-list">
+                                {% for assignment in assignments %}
+                                    <div class="assignment-item">
+                                        <div class="assignment-info">
+                                            <h4>{{ assignment.title }}</h4>
+                                            <p class="assignment-meta">Due: {{ assignment.due_date }}</p>
+                                        </div>
+                                        <a href="/view_submissions/{{ assignment.id }}" class="btn btn-sm btn-outline">
+                                            View Submissions
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="empty-state">
+                                <p>No assignments created yet</p>
+                                <a href="/create_assignment" class="btn btn-primary">Create Your First Assignment</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Recent Submissions</h3>
+                    </div>
+                    <div class="card-content">
+                        {% if recent_submissions %}
+                            <div class="submission-list">
+                                {% for submission in recent_submissions %}
+                                    <div class="submission-item">
+                                        <div class="submission-info">
+                                            <h4>{{ submission.filename }}</h4>
+                                            <div class="plagiarism-score">
+                                                <span class="score-label">Plagiarism Score:</span>
+                                                <span class="score-value {% if submission.plagiarism_score > 30 %}high{% elif submission.plagiarism_score > 15 %}medium{% else %}low{% endif %}">
+                                                    {{ submission.plagiarism_score }}%
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="empty-state">
+                                <p>No recent submissions</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecturer Dashboard - Online Assignment Submission System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">📚</div>
+                    <span>Online Assignment Submission</span>
+                </div>
+                <div class="user-info">
+                    <span class="welcome-text">Welcome, {{ user.full_name }}</span>
+                    <a href="/logout" class="btn btn-outline">Logout</a>
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Quick Actions</h3>
+                    </div>
+                    <div class="card-content">
+                        <a href="/create_assignment" class="btn btn-primary btn-block">
+                            <span class="btn-icon">➕</span>
+                            Create New Assignment
+                        </a>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Your Assignments</h3>
+                        <span class="badge">{{ assignments|length }}</span>
+                    </div>
+                    <div class="card-content">
+                        {% if assignments %}
+                            <div class="assignment-list">
+                                {% for assignment in assignments %}
+                                    <div class="assignment-item">
+                                        <div class="assignment-info">
+                                            <h4>{{ assignment.title }}</h4>
+                                            <p class="assignment-meta">Due: {{ assignment.due_date }}</p>
+                                        </div>
+                                        <a href="/view_submissions/{{ assignment.id }}" class="btn btn-sm btn-outline">
+                                            View Submissions
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="empty-state">
+                                <p>No assignments created yet</p>
+                                <a href="/create_assignment" class="btn btn-primary">Create Your First Assignment</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Recent Submissions</h3>
+                    </div>
+                    <div class="card-content">
+                        {% if recent_submissions %}
+                            <div class="submission-list">
+                                {% for submission in recent_submissions %}
+                                    <div class="submission-item">
+                                        <div class="submission-info">
+                                            <h4>{{ submission.filename }}</h4>
+                                            <div class="plagiarism-score">
+                                                <span class="score-label">Plagiarism Score:</span>
+                                                <span class="score-value {% if submission.plagiarism_score > 30 %}high{% elif submission.plagiarism_score > 15 %}medium{% else %}low{% endif %}">
+                                                    {{ submission.plagiarism_score }}%
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="empty-state">
+                                <p>No recent submissions</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

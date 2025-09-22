@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Assignment - Online Assignment Submission System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-card">
+            <div class="form-header">
+                <a href="/lecturer_dashboard" class="back-link">← Back to Dashboard</a>
+                <h2>Create New Assignment</h2>
+                <p class="form-subtitle">Set up a new assignment for your students</p>
+            </div>
+
+            <form class="form" method="POST">
+                <div class="form-group">
+                    <label for="title">Assignment Title</label>
+                    <input type="text" name="title" id="title" placeholder="Enter assignment title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description" rows="4" placeholder="Provide detailed instructions for the assignment" required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="due_date">Due Date</label>
+                        <input type="date" name="due_date" id="due_date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="max_score">Maximum Score</label>
+                        <input type="number" name="max_score" id="max_score" placeholder="100" min="1" required>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <a href="/lecturer_dashboard" class="btn btn-outline">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Create Assignment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Submissions - Online Assignment Submission System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="page-header">
+            <div class="header-content">
+                <a href="/lecturer_dashboard" class="back-link">← Back to Dashboard</a>
+                <div class="header-info">
+                    <h1>Submissions for: {{ assignment.title }}</h1>
+                    <p class="header-subtitle">Review and grade student submissions</p>
+                </div>
+            </div>
+        </header>
+
+        <main class="submissions-main">
+            {% if submissions %}
+                <div class="submissions-grid">
+                    {% for submission in submissions %}
+                        <div class="submission-card">
+                            <div class="submission-header">
+                                <h3>{{ submission.filename }}</h3>
+                                <div class="plagiarism-score">
+                                    <span class="score-value {% if submission.plagiarism_score > 30 %}high{% elif submission.plagiarism_score > 15 %}medium{% else %}low{% endif %}">
+                                        {{ submission.plagiarism_score }}%
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="submission-actions">
+                                <div class="action-buttons">
+                                    <a href="/download_submission/{{ submission.id }}" class="btn btn-sm btn-outline">
+                                        📥 Download
+                                    </a>
+                                    <a href="/plagiarism_report/{{ submission.id }}" class="btn btn-sm btn-outline">
+                                        📊 Report
+                                    </a>
+                                </div>
+
+                                <form class="grading-form" method="POST" action="/grade_submission/{{ submission.id }}">
+                                    <div class="grading-inputs">
+                                        <div class="input-group">
+                                            <label for="score_{{ submission.id }}">Score</label>
+                                            <input type="number" name="score" id="score_{{ submission.id }}" placeholder="0-100" min="0" max="100">
+                                        </div>
+                                        <div class="input-group">
+                                            <label for="feedback_{{ submission.id }}">Feedback</label>
+                                            <textarea name="feedback" id="feedback_{{ submission.id }}" placeholder="Provide feedback..." rows="2"></textarea>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-sm">Grade</button>
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="empty-state">
+                    <div class="empty-icon">📝</div>
+                    <h3>No submissions yet</h3>
+                    <p>Students haven't submitted their work for this assignment yet.</p>
+                </div>
+            {% endif %}
+        </main>
+    </div>
+</body>
+</html>
